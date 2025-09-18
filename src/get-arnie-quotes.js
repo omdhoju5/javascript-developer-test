@@ -13,7 +13,7 @@ const logger = {
 };
 
 // We can use retry mechanism in case of failure in real world api usage for better resiliency
-const processUrl = async (url) => {
+const fetchArnieQuote = async (url) => {
     logger.debug('Processing URL',  url );
     try {
         const response = await httpGet(url);
@@ -30,7 +30,7 @@ const processUrl = async (url) => {
 
 const getArnieQuotes = async (urls) => {
     logger.info('Getting arnie quotes', { urlCount: urls.length, urls });
-    return Promise.all(urls.map(processUrl));
+    return Promise.all(urls.map(fetchArnieQuote));
 };
 
 module.exports = { getArnieQuotes };

@@ -36,6 +36,11 @@ test('code to be executed in less than 400ms', async () => {
   expect(nanos / 1000 / 1000).toBeLessThan(400);
 });
 
+
+test('handles empty URL array', async () => {
+  expect(await getArnieQuotes([])).toEqual([]);
+});
+
 // Test that the function returns a Promise as per the requirement in readme.
 test('returns a promise', () => {
     expect.assertions(1);

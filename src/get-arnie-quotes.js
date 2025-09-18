@@ -12,7 +12,12 @@ const logger = {
     debug: (message, data = {}) => console.debug(`[DEBUG] ${message}`, data),
 };
 
-// We can use retry mechanism in case of failure in real world api usage for better resiliency
+/**
+ * Fetches an Arnie quote from a single URL
+ * @param {string} url - URL to fetch from
+ * @returns {Promise<Object>} { 'Arnie Quote': string } or { 'FAILURE': string }
+ * NOTE: We can use retry mechanism in case of failure in real world api usage for better resiliency
+ */
 const fetchArnieQuote = async (url) => {
     logger.debug('Processing URL',  url );
     try {
@@ -28,6 +33,11 @@ const fetchArnieQuote = async (url) => {
     }
 };
 
+ /**
+ * Fetches Arnie quotes from multiple URLs concurrently
+ * @param {string[]} urls - Array of URLs to process
+ * @returns {Promise<Object[]>} Array of quote/failure objects in input order
+ */
 const getArnieQuotes = async (urls) => {
     logger.info('Getting arnie quotes', { urlCount: urls.length, urls });
     return Promise.all(urls.map(fetchArnieQuote));

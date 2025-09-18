@@ -82,3 +82,34 @@ An example HTTP response:
 }
 
 ```
+
+
+
+## Implementation Details
+
+### Solution Overview
+
+The `getArnieQuotes()` function has been implemented with the following key features:
+
+#### Core Functionality
+- **Concurrent Processing**: Uses `Promise.all()` to execute all HTTP requests simultaneously for optimal performance
+- **Error Handling**: Comprehensive try-catch blocks handle both HTTP errors and JSON parsing failures
+- **Status Code Logic**: Properly differentiates between HTTP 200 (success) and non-200 (failure) responses
+
+#### Code Structure
+```javascript
+// Constants for maintainability
+const ARNIE_QUOTE_KEY = 'Arnie Quote';
+const FAILURE_KEY = 'FAILURE';
+const SUCCESS_STATUS = 200;
+
+// Modular design with helper function
+const processUrl = async (url) => { /* handles individual URL processing */ };
+const getArnieQuotes = async (urls) => { /* orchestrates the overall process */ };
+````
+
+### Key Implementation Decisions
+* Concurrency with Promise.all() over sequential processing
+* Clean Code with constants for hardcoded strings and separate helper functions to process individual URLs
+* Error Handling with try-catch blocks for both HTTP requests and JSON parsing
+* Simple Logging for debugging and traceability

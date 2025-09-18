@@ -35,3 +35,10 @@ test('code to be executed in less than 400ms', async () => {
   expect(seconds).toBe(0);
   expect(nanos / 1000 / 1000).toBeLessThan(400);
 });
+
+// Test that the function returns a Promise as per the requirement in readme.
+test('returns a promise', () => {
+    expect.assertions(1);
+    const result = getArnieQuotes(['http://www.smokeballdev.com/arnie0', "http://www.smokeballdev.com/arnie1"]);
+    expect(result).toBeInstanceOf(Promise);
+});

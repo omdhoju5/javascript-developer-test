@@ -104,7 +104,7 @@ const FAILURE_KEY = 'FAILURE';
 const SUCCESS_STATUS = 200;
 
 // Modular design with helper function
-const processUrl = async (url) => { /* handles individual URL processing */ };
+const fetchArnieQuote = async (url) => { /* handles individual URL processing */ };
 const getArnieQuotes = async (urls) => { /* orchestrates the overall process */ };
 ````
 
